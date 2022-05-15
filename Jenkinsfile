@@ -8,11 +8,11 @@ pipeline {
 
     stages {
 
-        stage('init') {
+        stage('init tf') {
            steps {
                 echo 'initializing terraform ...'
                 withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform init -reconfigure'
+                    sh 'terraform init'
                 }
            }
        }
