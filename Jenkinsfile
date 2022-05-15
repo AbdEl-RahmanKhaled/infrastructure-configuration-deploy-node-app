@@ -15,9 +15,7 @@ pipeline {
                script {
                     echo 'initializing terraform ...'
                     withAWS(credentials: 'jenkins_aws') {
-                        sh 'cd terraform/'
-                        sh 'ls'
-                        sh 'terraform init -migrate-state'
+                        sh 'terraform -chdir=terraform/ init -migrate-state'
                     }
                }
            }
@@ -27,7 +25,7 @@ pipeline {
                script {
                     echo 'deploying image....'
                     withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform apply --var-file ${env}.tfvars'
+                    sh 'terraform -chdir=terraform/ apply --var-file ${env}.tfvars'
                     }
                }
             }
