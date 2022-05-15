@@ -1,28 +1,31 @@
 pipeline {
     agent any
 
+    environment {
+        env: "prod"
+    }
+
     tools {
-        
         terraform "tf"
     }
 
     stages {
-
         stage('init tf') {
            steps {
                 echo 'initializing terraform ...'
                 withAWS(credentials: 'jenkins_aws') {
+                    sh 'cd terraform/'
                     sh 'terraform init -migrate-state'
                 }
            }
        }
-       stage('plan') {
+       stage('apply infra') {
            steps {
                script {
                     echo 'deploying image....'
                     withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform plan --var-file prod.tfvars'
-                }
+                    sh 'terraform apply --var-file ${env}.tfvars'
+                    }
                }
             }
         }
