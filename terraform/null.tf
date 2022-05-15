@@ -5,7 +5,7 @@ resource "null_resource" "out" {
   }
 
   provisioner "local-exec" {
-    command = "echo ansible_ssh_common_args: '-o ProxyCommand=\"ssh ssh -i ../key/key.pem -t -W %h:%p -q ubuntu@${aws_instance.pub-ec2.public_dns}\" \n\n[private]' >> ../ansible/inventory"
+    command = "echo 'ansible_ssh_common_args=\"-o ProxyCommand=\\\"ssh -i ../key/key.pem -t -W %h:%p -q ubuntu@${aws_instance.pub-ec2.public_dns}\\\"\" \n\n[private]' >> ../ansible/inventory"
  
   }
 
