@@ -25,7 +25,7 @@ pipeline {
                script {
                     echo 'deploying image....'
                     withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform -chdir=terraform/ apply --var-file terraform/${env}.tfvars'
+                    sh 'terraform -chdir=terraform/ apply --var-file ${env}.tfvars'
                     }
                }
             }
