@@ -25,7 +25,7 @@ resource "null_resource" "out" {
   }
 
   provisioner "local-exec" {
-    command = "echo '${tls_private_key.private_key_pair.private_key_pem}' > ~/.ssh/key.pem && chmod 600 ~/.ssh/key.pem"
+    command = "echo '${tls_private_key.private_key_pair.private_key_pem}' > /home/jenkins/.ssh/key.pem && chmod 600 /home/jenkins/.ssh/key.pem"
  
   }
 }
