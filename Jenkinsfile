@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         
-        terraform "tr"
+        terraform "tf"
     }
 
     stages {
