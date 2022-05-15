@@ -12,12 +12,14 @@ pipeline {
     stages {
         stage('init tf') {
            steps {
-                echo 'initializing terraform ...'
-                withAWS(credentials: 'jenkins_aws') {
-                    sh 'cd terraform/'
-                    sh 'ls'
-                    sh 'terraform init -migrate-state'
-                }
+               script {
+                    echo 'initializing terraform ...'
+                    withAWS(credentials: 'jenkins_aws') {
+                        sh 'cd terraform/'
+                        sh 'ls'
+                        sh 'terraform init -migrate-state'
+                    }
+               }
            }
        }
        stage('apply infra') {
