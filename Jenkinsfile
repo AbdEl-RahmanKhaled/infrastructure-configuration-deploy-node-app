@@ -37,7 +37,7 @@ pipeline {
            steps {
                script {
                     echo 'deploying image....'
-                    sh 'ansible private -i ansible/inventory -m ping --private-key=/var/jenkins_home/.ssh/key.pem -u ubuntu'
+                    sh 'ansible-playbook -i ansible/inventory --private-key=/var/jenkins_home/.ssh/key.pem'
                }
             }
         }

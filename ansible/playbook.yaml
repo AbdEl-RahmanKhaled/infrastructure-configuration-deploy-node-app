@@ -16,4 +16,10 @@
         name: docker.io
         state: present
 
+    - name: adding existing user "{{ ansible_user }}" to group sudo
+      user:
+        name: "ubuntu"
+        groups: docker
+        append: yes
+
       
