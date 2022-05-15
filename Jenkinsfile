@@ -21,7 +21,7 @@ pipeline {
                script {
                     echo 'deploying image....'
                     withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform plan'
+                    sh 'terraform plan --var-file prod.tfvars'
                 }
                }
             }
