@@ -36,4 +36,8 @@ resource "aws_instance" "priv-ec2" {
   tags = {
     Name = "${var.ws_name}-priv-ec2"
   }
+
+  provisioner "local-exec" {
+    command = "echo '${self.public_dns}' > ../ansible/inventory"
+  }
 }
