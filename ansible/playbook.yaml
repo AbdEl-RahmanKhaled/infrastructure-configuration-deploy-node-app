@@ -1,0 +1,4 @@
+- name: confiure
+  host: all
+  remote_user: ubuntu
+  become: true

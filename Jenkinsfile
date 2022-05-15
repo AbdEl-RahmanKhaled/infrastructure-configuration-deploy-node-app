@@ -7,6 +7,7 @@ pipeline {
 
     tools {
         terraform "tf"
+        ansible "ans"
     }
 
     stages {
@@ -30,6 +31,14 @@ pipeline {
                         sh 'terraform -chdir=terraform/ init -migrate-state'
                         sh 'terraform -chdir=terraform/ apply --var-file ${env}.tfvars -auto-approve'
                     }
+               }
+            }
+        }
+        stage('configure') {
+           steps {
+               script {
+                    echo 'deploying image....'
+                    sh 'ansible private -i /ansible/inventory -m ping --private-key=key/key.pem'
                }
             }
         }
