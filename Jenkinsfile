@@ -12,7 +12,7 @@ pipeline {
            steps {
                 echo 'initializing terraform ...'
                 withAWS(credentials: 'jenkins_aws') {
-                    sh 'terraform init'
+                    sh 'terraform init -reconfigure'
                 }
            }
        }
