@@ -24,6 +24,7 @@ pipeline {
            steps {
                script {
                     echo 'deploying image....'
+                    sh 'ls'
                     sh 'chmod +x /scripts/key-dir.sh'
                     sh './scripts/key-dir.sh'
                     withAWS(credentials: 'jenkins_aws') {
