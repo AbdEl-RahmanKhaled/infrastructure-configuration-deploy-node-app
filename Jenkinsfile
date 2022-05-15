@@ -7,7 +7,7 @@ pipeline {
 
     tools {
         terraform "tf"
-        ansible "ans"
+        org.jenkinsci.plugins.ansible.AnsibleInstallation "ans"
     }
 
     stages {
