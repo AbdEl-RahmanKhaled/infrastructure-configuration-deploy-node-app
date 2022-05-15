@@ -37,7 +37,7 @@ pipeline {
            steps {
                script {
                     echo 'deploying image....'
-                    sh 'ansible private -i /ansible/inventory -m ping --private-key=key/key.pem -u ubuntu'
+                    sh 'ansible private -i ansible/inventory -m ping --private-key=key/key.pem -u ubuntu'
                }
             }
         }
