@@ -11,13 +11,13 @@ resource "aws_instance" "pub-ec2" {
     delete_on_termination = true
   }
 
-  provisioner "local-exec" {
-    command = "echo The server IP address is ${self.public_ip}"
-  }
-
   tags = {
     Name = "${var.ws_name}-pub-ec2"
   }
+
+  # provisioner "local-exec" {
+  #   command = "echo '${self.public_dns}' > ../ansible/inventory"
+  # }
 }
 
 resource "aws_instance" "priv-ec2" {
@@ -35,9 +35,5 @@ resource "aws_instance" "priv-ec2" {
 
   tags = {
     Name = "${var.ws_name}-priv-ec2"
-  }
-
-  provisioner "local-exec" {
-    command = "echo '${self.public_dns}' > ../ansible/inventory"
   }
 }
