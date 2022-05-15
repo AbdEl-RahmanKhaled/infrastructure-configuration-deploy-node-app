@@ -7,7 +7,6 @@ pipeline {
 
     tools {
         terraform "tf"
-        ansible "ans"
     }
 
     stages {
