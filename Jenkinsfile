@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        env: "prod"
+        env = "prod"
     }
 
     tools {
