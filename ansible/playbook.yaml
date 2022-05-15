@@ -16,7 +16,12 @@
         name: docker.io
         state: present
 
-    - name: adding existing user "{{ ansible_user }}" to group sudo
+    - name: install wget
+      apt:
+        name: wget
+        state: present
+
+    - name: adding user to group docker
       user:
         name: "ubuntu"
         groups: docker
