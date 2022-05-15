@@ -1,4 +1,19 @@
 - name: confiure
-  host: all
+  hosts: private
   remote_user: ubuntu
   become: true
+  tasks:
+    - name: update cache
+      apt: update_cache=yes
+
+    - name: instal open jdk
+      apt:
+        name: default-jdk-headless
+        state: present 
+    
+    - name: install docker
+      apt:
+        name: docker.io
+        state: present
+
+      

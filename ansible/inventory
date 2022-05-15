@@ -1,7 +1,1 @@
-[private:vars]
-StrictHostKeyChecking=no
-ServerAliveInterval=5
-ansible_ssh_common_args="-o ProxyCommand=\"ssh -i ../key/key.pem -t -W %h:%p -q ubuntu@ec2-54-237-44-76.compute-1.amazonaws.com\"" 
 
-[private]
-10.0.3.130
