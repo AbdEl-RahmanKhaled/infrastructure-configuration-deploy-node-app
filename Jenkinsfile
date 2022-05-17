@@ -25,7 +25,8 @@ pipeline {
            steps {
                script {
                     echo 'deploying image....'
-                    // sh 'chmod +x scripts/key-dir.sh'
+                    sh 'chmod +x scripts/inv-file.sh'
+                    sh 'chmod +x scripts/config-file.sh'
                     // sh './scripts/key-dir.sh'
                     withAWS(credentials: 'jenkins_aws') {
                         sh 'terraform -chdir=terraform/ taint null_resource.out'
