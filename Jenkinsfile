@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        env = "prod"
+        deploy_env = "prod"
     }
 
     tools {
@@ -31,7 +31,7 @@ pipeline {
                     withAWS(credentials: 'jenkins_aws') {
                         sh 'terraform -chdir=terraform/ taint null_resource.out'
                         withCredentials([usernamePassword(credentialsId: 'rds_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASS')]) {
-                            sh "TF_VAR_rds_username=${USERNAME} TF_VAR_rds_password=${PASS} terraform -chdir=terraform/ apply --var-file ${env}.tfvars -auto-approve"
+                            sh "TF_VAR_rds_username=${USERNAME} TF_VAR_rds_password=${PASS} terraform -chdir=terraform/ apply --var-file ${deploy_env}.tfvars -auto-approve"
                         }
                     }
                }
