@@ -8,7 +8,7 @@ resource "null_resource" "out" {
   
   provisioner "local-exec" {
     command = <<EOF
-      ../scripts/inv-file.sh /var/jenkins_home/.ssh/key.pem ${aws_instance.pub-ec2.public_dns} ${aws_instance.priv-ec2.private_ip}
+      ../scripts/inv-file.sh /var/jenkins_home/.ssh/key.pem ${aws_instance.pub-ec2.public_dns} private_instance
       ../scripts/config-file.sh ${aws_instance.pub-ec2.public_dns} ${aws_instance.priv-ec2.private_ip}
     EOF
   }
