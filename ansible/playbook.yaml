@@ -21,6 +21,11 @@
         src: agent.jar
         dest: /home/ubuntu
 
+    - name: copy app env file agent file
+      copy:
+        src: .env
+        dest: /home/ubuntu
+
     - name: adding user to group docker
       user:
         name: "ubuntu"
