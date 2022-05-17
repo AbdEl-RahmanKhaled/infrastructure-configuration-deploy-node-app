@@ -12,7 +12,7 @@ resource "aws_lb" "app_lb" {
 resource "aws_lb_listener" "app_lb_lestener" {
   load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
-  protocol          = "HTTP"
+  protocol          = "TCP"
 
   default_action {
     type             = "forward"
