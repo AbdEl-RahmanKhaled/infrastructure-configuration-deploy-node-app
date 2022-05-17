@@ -9,7 +9,7 @@ resource "null_resource" "out" {
     command = <<EOF
       ../scripts/inv-file.sh private_instance
       ../scripts/config-file.sh ${aws_instance.pub-ec2.public_dns} ${aws_instance.priv-ec2.private_ip}
-      ../scripts/env-file.sh ${aws_db_instance.rds.address} ${aws_db_instance.rds.port} ${aws_elasticache_cluster.ec-redis.cache_nodes[0].address} 
+      ../scripts/env-file.sh ${aws_db_instance.rds.address} ${aws_db_instance.rds.port} ${aws_elasticache_cluster.ec-redis.cache_nodes[0].address} ${aws_elasticache_cluster.ec-redis.port}
     EOF
   }
 
