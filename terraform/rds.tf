@@ -6,8 +6,8 @@ resource "aws_db_instance" "rds" {
   engine_version       = "5.7"
   instance_class       = "db.t2.micro"
   db_name              = "${var.ws_name}_db"
-  username             = "admin"
-  password             = "Admin2022"
+  username             = var.rds_username
+  password             = var.rds_password
 #   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
 }

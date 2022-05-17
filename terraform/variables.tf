@@ -47,3 +47,12 @@ variable "ami_id" {
   type = string
   description = "Image id"
 }
+
+# rds
+variable "rds_username" {
+  type = string
+}
+
+variable "rds_password" {
+  type = string
+}

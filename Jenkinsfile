@@ -30,7 +30,9 @@ pipeline {
                     // sh './scripts/key-dir.sh'
                     withAWS(credentials: 'jenkins_aws') {
                         sh 'terraform -chdir=terraform/ taint null_resource.out'
-                        sh 'terraform -chdir=terraform/ apply --var-file ${env}.tfvars -auto-approve'
+                        withCredentials([usernamePassword(credentialsId: 'rds_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASS')]) {
+                            sh "TF_VAR_rds_username=${USERNAME} TF_VAR_rds_password=${PASS} terraform -chdir=terraform/ apply --var-file ${env}.tfvars -auto-approve"
+                        }
                     }
                }
             }
