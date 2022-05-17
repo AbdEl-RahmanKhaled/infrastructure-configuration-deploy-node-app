@@ -14,7 +14,6 @@ pipeline {
            steps {
                script {
                     echo 'initializing terraform ...'
-                    sh 'echo $USER,$HOME'
                     withAWS(credentials: 'jenkins_aws') {
                         sh 'terraform -chdir=terraform/ init -migrate-state'
                     }
@@ -27,6 +26,7 @@ pipeline {
                     echo 'deploying image....'
                     sh 'chmod +x scripts/inv-file.sh'
                     sh 'chmod +x scripts/config-file.sh'
+                    sh 'chmod +x scripts/env-file.sh'
                     // sh './scripts/key-dir.sh'
                     withAWS(credentials: 'jenkins_aws') {
                         sh 'terraform -chdir=terraform/ taint null_resource.out'

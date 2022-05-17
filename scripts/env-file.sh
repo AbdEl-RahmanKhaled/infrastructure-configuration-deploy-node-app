@@ -1,0 +1,7 @@
+
+cat <<EOF > ../ansible/files/.env
+RDS_HOSTNAME=$1
+RDS_PORT=$2
+REDIS_HOSTNAME=$3
+REDIS_PORT=$4
+EOF
