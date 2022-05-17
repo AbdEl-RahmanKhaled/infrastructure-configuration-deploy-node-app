@@ -16,10 +16,10 @@
         name: docker.io
         state: present
 
-    - name: install wget
-      apt:
-        name: wget
-        state: present
+    - name: copy jenkins agent file
+      copy:
+        src: agent.jar
+        dest: /home/ubuntu
 
     - name: adding user to group docker
       user:
