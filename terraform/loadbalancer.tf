@@ -2,7 +2,7 @@ resource "aws_lb" "app_lb" {
   name               = "app-lb"
   internal           = false
   load_balancer_type = "network"
-  subnets            = [module.network.pub_sub-1_id, pub_sub-2_id]
+  subnets            = [module.network.pub_sub-1_id, module.network.pub_sub-2_id]
   
   tags = {
     Environment = "production"
