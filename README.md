@@ -99,9 +99,9 @@ In this project we will:
 
 ## Build & Deploy Pipeline
 
-We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example) to deploy on our infra.
+We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) to deploy on our infra.
 
-* Create new pipleline with the App [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example)
+* Create new pipleline with the App [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis)
 
     `Must choose "rds_redis" branch` 
 
