@@ -45,24 +45,24 @@ In this project we will:
 
 ### On AWS 
 
-* Create IAM user for Jenkins with "Programmatic access" 
-* Create S3 bucket in "eu-west-1" for statfile of terraform
-* Change the "bucket" value in "terraform/backend.tf" file with the new one
-* create "DynamoDB" with name "terraform-lock" with one field named "LockID" 
+* Create IAM user for Jenkins with `Programmatic access` 
+* Create S3 bucket in `eu-west-1` for statfile of terraform
+* Change the `bucket` value in `terraform/backend.tf` file with the new one
+* create `DynamoDB` with name `"terraform-lock"` with one field named `"LockID"`
 
 ### On Jenkins
 
-* Add IAM user to Jenkins under "Manage Jenkins > Manage Credentials > Add Credentials" and configure it's type to be "AWS Credentials" name it "jenkins_aws" 
+* Add IAM user to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and configure it's type to be `AWS Credentials` name it `"jenkins_aws"`
 
     ![aws_cred](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/aws_cred.png)
 
-* Install "Pipeline: AWS Steps" and "Terraform Plugin" plugins from "Manage Jenkins > Manage Plugins"
+* Install `"Pipeline: AWS Steps"` and `"Terraform Plugin"` plugins from `Manage Jenkins > Manage Plugins`
 
 * Configure Terraform Plugin from "Manage Jenkins > Global Tool Configuration" under Terraform section 
     
-    * Set Name > tf
-    * check "Install automatically"
-    * Set Version "Terraform >= 30413 linux (amd64)"
+    * Set Name >  `"tf"`
+    * check `Install automatically`
+    * Set Version `Terraform >= 30413 linux (amd64)`
 
 * Create pipeline and add your repo link
 
@@ -70,9 +70,29 @@ In this project we will:
 
 * Push the changes
 
-* Trigger the pipeline to build the infrastructure and configure the environment. After the pipeline finish will create the following structure
+* Trigger the pipeline to build the infrastructure and configure the environment 
 
-    ![infra](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/AWS-infra.jpg)
+* After the pipeline is finished it will:
+
+    * Create the following structure with Terrafom
+
+        ![infra](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/AWS-infra.jpg)
+
+    * Configure Jenkins server to access the private instance through the bastion server by write `config` file under ~/.ssh
+
+    * Write the inventory file for Ansible
+
+    * Write `.env` file with the evironment variables for our App
+
+    * Add and set permissions to the private key for accessing instances. Under ~/.ssh you will find file named `key.pem`
+
+    * Configure the private instance to be ready to deploy our app using Ansible, it will:
+    
+        * Install Docker, Java
+        * Copy `.env` file to the server 
+        * Copy `ansible/files/agent.jar` to the server to configure the server as a slave for Jenkins
+
+
 
 
 
