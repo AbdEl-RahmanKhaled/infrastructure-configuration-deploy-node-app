@@ -7,13 +7,13 @@ In this project we will:
 * Build our app using [Docker](https://www.docker.com/)
 * Integrate all these tools with each other and build a pipeline using [Jenkins](https://www.jenkins.io/) to deploy our app
 
-## Tools Used
+# Tools Used
 
 <p align="center">
 <a href="https://www.terraform.io/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/terraform/terraform-original-wordmark.svg" alt="terraform" width="40" height="40"/> </a> <a href="https://www.ansible.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/ansible/ansible-original-wordmark.svg" alt="ansible" width="40" height="40"/> </a>  <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/bash/bash-original.svg" alt="bash" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.jenkins.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/jenkins/jenkins-original.svg" alt="jenkins" width="40" height="40"/> </a> 
 </p>
 
-## Prerequisites
+# Prerequisites
 
 * Fork the repository
 
@@ -41,10 +41,10 @@ In this project we will:
     ```
     Now you can access the jenkins server from http://localhost:8080
 
-## Get Started
+# Get Started
+## Infra Pipeleine
 
 ### On AWS 
-
 * Create IAM user for Jenkins with `Programmatic access` 
 * Create S3 bucket in `eu-west-1` for statfile of terraform
 * Change the `bucket` value in `terraform/backend.tf` file with the new one
@@ -90,7 +90,27 @@ In this project we will:
     
         * Install Docker, Java
         * Copy `.env` file to the server 
-        * Copy `ansible/files/agent.jar` to the server to configure the server as a slave for Jenkins
+        * Copy `ansible/files/agent.jar` to the server to configure the server as an agent for Jenkins
+
+* Now, configure the private instance as an agent for Jenkins. From `Manage jenkins > Manage nodes and clouds > New Node` and configure it as below 
+   
+    ![agent](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/slave.png)
+
+
+## Build & Deploy Pipeline
+
+We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example) to deploy on our infra.
+
+* Create new pipleline with the App [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example)
+
+    `Must choose "rds_redis" branch` 
+
+    ![app pipeline](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/app-pipeline.png)
+
+* Trigger the pipeline to deploy the App
+
+Finally, you can access the deployed app from created `Load Balancer` URL and check the Database, Redis connectivity by hitting `/db` and `/redis` from your browser.
+
 
 
 
