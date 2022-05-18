@@ -103,13 +103,13 @@ In this project we will:
 
 We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) to deploy on our infra.
 
-* Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis)
+* Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) `rds_redis` branch
 
 * Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/) in `Jenkinsfile`
 
 * Add DockerHub credentials to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and name it with `docker-hub`
 
-* Push the changes
+* Push the changes to `rds_redis` branch
 
 * Create new pipleline with the forked repo
 
