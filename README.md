@@ -64,6 +64,8 @@ In this project we will:
     * check `Install automatically`
     * Set Version `Terraform >= 30413 linux (amd64)`
 
+* Create preferred RDS credentials `Username and Password` to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and name it with `rds_cred`
+
 * Create pipeline and add your repo link
 
     ![pipeline](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/pipeline.png)
@@ -101,7 +103,15 @@ In this project we will:
 
 We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) to deploy on our infra.
 
-* Create new pipleline with the App [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis)
+* Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis)
+
+* Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/)
+
+* Add DockerHub credentials to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and name it with `docker-hub`
+
+* Push the changes
+
+* Create new pipleline with the forked repo
 
     `Must choose "rds_redis" branch` 
 
