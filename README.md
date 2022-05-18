@@ -5,7 +5,7 @@ In this project we will:
 * Bulid infrastructure on [AWS](https://aws.amazon.com/) using [Terraform](https://www.terraform.io/)
 * Configure the environment using [Ansible](https://www.ansible.com/)
 * Build simple node.js app using [Docker](https://www.docker.com/)
-* Integrate all these tools with each other and build a pipeline using [Jenkins](https://www.jenkins.io/) to deploy our app
+* Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy our app
 
 # Tools Used
 
