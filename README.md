@@ -105,7 +105,7 @@ We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenk
 
 * Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis)
 
-* Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/)
+* Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/) in `Jenkinsfile`
 
 * Add DockerHub credentials to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and name it with `docker-hub`
 
