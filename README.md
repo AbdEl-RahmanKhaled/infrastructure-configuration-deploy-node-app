@@ -1,4 +1,4 @@
-# Infrastructure, Configuration and Deployment
+# Infrastructure, Configuration and Deployment Automation
 
 In this project we will:
 
