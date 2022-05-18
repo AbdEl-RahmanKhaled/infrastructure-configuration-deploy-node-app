@@ -54,7 +54,7 @@ In this project we will:
 
 * Add IAM user to Jenkins under "Manage Jenkins > Manage Credentials > Add Credentials" and configure it's type to be "AWS Credentials" name it "jenkins_aws" 
 
-    ![aws_cred]()
+    ![aws_cred](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/aws_cred.png)
 
 * Install "Pipeline: AWS Steps" and "Terraform Plugin" plugins from "Manage Jenkins > Manage Plugins"
 
@@ -64,11 +64,15 @@ In this project we will:
     * check "Install automatically"
     * Set Version "Terraform >= 30413 linux (amd64)"
 
-* Push the changes and add your repo link
+* Create pipeline and add your repo link
+
+    ![pipeline](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/pipeline.png)
+
+* Push the changes
 
 * Trigger the pipeline to build the infrastructure and configure the environment. After the pipeline finish will create the following structure
 
-    ![infra]()
+    ![infra](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/AWS-infra.jpg)
 
 
 
