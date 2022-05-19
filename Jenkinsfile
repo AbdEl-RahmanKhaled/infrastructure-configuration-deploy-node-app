@@ -28,7 +28,7 @@ pipeline {
                     sh 'chmod +x scripts/config-file.sh'
                     sh 'chmod +x scripts/env-file.sh'
                     withAWS(credentials: 'jenkins_aws') {
-                        sh 'terraform -chdir=terraform/ taint null_resource.out'
+                        // sh 'terraform -chdir=terraform/ taint null_resource.out'
                         withCredentials([usernamePassword(credentialsId: 'rds_cred', usernameVariable: 'TF_VAR_rds_password', passwordVariable: 'PASS')]) {
                             sh "terraform -chdir=terraform/ apply --var-file ${deploy_env}.tfvars -auto-approve"
                         }

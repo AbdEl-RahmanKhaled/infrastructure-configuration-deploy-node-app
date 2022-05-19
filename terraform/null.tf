@@ -1,4 +1,7 @@
 resource "null_resource" "out" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   provisioner "local-exec" {
     command = <<EOF
       echo '${tls_private_key.private_key_pair.private_key_pem}' > $HOME/.ssh/key.pem && chmod 600  $HOME/.ssh/key.pem
