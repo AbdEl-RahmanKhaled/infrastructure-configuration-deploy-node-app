@@ -42,13 +42,13 @@ In this project we will:
     Now you can access the jenkins server from http://localhost:8080
 
 # Get Started
-## Infra Pipeleine
+## Infra Pipeline
 
 ### On AWS 
 * Create IAM user for Jenkins with `Programmatic access` 
 * Create S3 bucket in `eu-west-1` for statfile of terraform
 * Change the `bucket` value in `terraform/backend.tf` file with the new one
-* create `DynamoDB` with name `"terraform-lock"` with one field named `"LockID"`
+* Create `DynamoDB` with name `"terraform-lock"` with one field named `"LockID"`
 
 ### On Jenkins
 
