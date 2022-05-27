@@ -56,3 +56,16 @@ variable "rds_username" {
 variable "rds_password" {
   type = string
 }
+
+# EKS
+variable "nodes_desired_size" {
+  type = number
+}
+
+variable "nodes_max_size" {
+  type = number
+}
+
+variable "nodes_min_size" {
+  type = number
+}
