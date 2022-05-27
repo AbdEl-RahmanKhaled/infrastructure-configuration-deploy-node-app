@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 
 # Nodes iam role
 resource "aws_iam_role" "eks_nodes" {
-  name = "eks-node-group-tuto"
+  name = "eks-node-group"
 
   assume_role_policy = <<POLICY
 {

@@ -10,4 +10,9 @@ resource "aws_eks_cluster" "aws_eks" {
   tags = {
     Name = "${var.ws_name}-eks"
   }
+
+  depends_on = [
+    aws_iam_role_policy_attachment.AmazonEKSClusterPolicy,
+    aws_iam_role_policy_attachment.AmazonEKSServicePolicy
+  ]
 }
