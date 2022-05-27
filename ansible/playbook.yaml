@@ -3,6 +3,12 @@
   remote_user: ubuntu
   become: true
   tasks:
+    - name: Install awscli package.
+      shell:
+        chdir: /tmp
+        cmd: . ./aws/install
+      # when: aws_cli_unarchive_installer.changed
+      
     - name: update cache
       apt: update_cache=yes
 
@@ -63,7 +69,5 @@
         path: /tmp/aws/install
         mode: '0777'
 
-    - name: Install awscli package.
-      shell: chdir=/tmp . ./aws/install
-      # when: aws_cli_unarchive_installer.changed
+    
       
