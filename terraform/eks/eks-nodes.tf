@@ -7,6 +7,7 @@ resource "aws_eks_node_group" "node" {
   instance_types = [ "t2.small" ]
   ami_type = "AL2_x86_64"
 
+
   scaling_config {
     desired_size = var.nodes_desired_size
     max_size     = var.nodes_max_size
@@ -18,5 +19,6 @@ resource "aws_eks_node_group" "node" {
     aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
+    aws_eks_cluster.aws_eks
   ]
 }
