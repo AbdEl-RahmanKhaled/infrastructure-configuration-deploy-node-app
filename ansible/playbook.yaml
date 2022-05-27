@@ -58,6 +58,11 @@
       when: aws_cli_download_bundle.changed
       register: aws_cli_unarchive_installer
 
+    - name: check permission
+      ansible.builtin.file:
+        path: /tmp/aws/install
+        mode: '0777'
+
     - name: Install awscli package.
       command: chdir=/tmp . ./aws/install
       # when: aws_cli_unarchive_installer.changed
