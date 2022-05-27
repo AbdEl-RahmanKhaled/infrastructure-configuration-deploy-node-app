@@ -48,4 +48,17 @@
         name: kubectl
         state: present
         update_cache: yes
+
+    - name: Download the awscli bundle.
+      get_url: url=https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip dest=/tmp/awscli-bundle.zip
+      register: aws_cli_download_bundle
+
+    - name: Unarchive the installer.
+      unarchive: src=/tmp/awscli-bundle.zip dest=/tmp copy=no creates=/tmp/awscli-bundle
+      when: aws_cli_download_bundle.changed
+      register: aws_cli_unarchive_installer
+
+    - name: Install awscli package.
+      shell: . /tmp/awscli-bundle/install
+      when: aws_cli_unarchive_installer.changed
       
