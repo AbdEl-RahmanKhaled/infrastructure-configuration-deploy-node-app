@@ -58,9 +58,6 @@
       when: aws_cli_download_bundle.changed
       register: aws_cli_unarchive_installer
 
-    - name: ls
-      command: ls /tmp/awscli-bundle/
-
     - name: Install awscli package.
       shell: . /tmp/aws/install
       # when: aws_cli_unarchive_installer.changed
