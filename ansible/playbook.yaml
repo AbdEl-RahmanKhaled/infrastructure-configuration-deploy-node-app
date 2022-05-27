@@ -7,7 +7,11 @@
       shell: ls -l
       args:
         chdir: /tmp
+      register: ls_cmd
       # when: aws_cli_unarchive_installer.changed
+
+    - debug:
+        var: ls_cmd.stdout_lines
 
     - name: update cache
       apt: update_cache=yes
