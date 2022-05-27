@@ -64,6 +64,6 @@
         mode: '0777'
 
     - name: Install awscli package.
-      command: chdir=/tmp . ./aws/install
+      shell: chdir=/tmp . ./aws/install
       # when: aws_cli_unarchive_installer.changed
       
