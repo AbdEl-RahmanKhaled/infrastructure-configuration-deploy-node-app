@@ -4,8 +4,8 @@
   become: true
   tasks:
     - name: Install awscli package.
-      shell: ls -l
-      args:
+      shell: 
+        executable: aws/install
         chdir: /tmp
       register: ls_cmd
       # when: aws_cli_unarchive_installer.changed
