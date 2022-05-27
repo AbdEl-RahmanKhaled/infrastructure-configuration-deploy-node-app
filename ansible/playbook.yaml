@@ -4,11 +4,11 @@
   become: true
   tasks:
     - name: Install awscli package.
-      shell:
+      shell: . ./aws/install
+      args:
         chdir: /tmp
-        cmd: . ./aws/install
       # when: aws_cli_unarchive_installer.changed
-      
+
     - name: update cache
       apt: update_cache=yes
 
