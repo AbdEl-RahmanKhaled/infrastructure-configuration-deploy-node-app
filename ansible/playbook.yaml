@@ -8,7 +8,7 @@
 
     - name: instal open tools
       apt:
-        name: default-jdk-headless
+        name: "{{ packages }}"
         state: present 
       vars: 
         packages:
