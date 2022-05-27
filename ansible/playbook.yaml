@@ -6,15 +6,21 @@
     - name: update cache
       apt: update_cache=yes
 
-    - name: instal open jdk
+    - name: instal open tools
       apt:
         name: default-jdk-headless
         state: present 
+      vars: 
+        packages:
+          - default-jdk-headless
+          - docker.io
+          - zip
     
-    - name: install docker
-      apt:
-        name: docker.io
-        state: present
+    - name: adding user to group docker
+      user:
+        name: "ubuntu"
+        groups: docker
+        append: yes
 
     - name: copy jenkins agent file
       copy:
@@ -25,12 +31,6 @@
       copy:
         src: .env
         dest: /home/ubuntu
-
-    - name: adding user to group docker
-      user:
-        name: "ubuntu"
-        groups: docker
-        append: yes
 
     - name: Add an apt signing key for kubectl
       apt_key:
