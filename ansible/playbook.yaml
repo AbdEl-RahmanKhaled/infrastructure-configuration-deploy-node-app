@@ -54,7 +54,7 @@
       register: aws_cli_download_bundle
 
     - name: Unarchive the installer.
-      unarchive: src=/tmp/awscli-bundle.zip dest=/tmp copy=no creates=/tmp/awscli-bundle
+      unarchive: src=/tmp/awscli-bundle.zip dest=/tmp copy=no
       when: aws_cli_download_bundle.changed
       register: aws_cli_unarchive_installer
 
@@ -62,6 +62,6 @@
       command: ls /tmp/awscli-bundle/
 
     - name: Install awscli package.
-      shell: . /tmp/awscli-bundle/aws/install
+      shell: . /tmp/aws/install
       # when: aws_cli_unarchive_installer.changed
       
