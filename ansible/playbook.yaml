@@ -5,7 +5,7 @@
   tasks:
     - name: Install awscli package.
       shell: 
-        executable: aws/install
+        cmd: ./aws/install
         chdir: /tmp
       # when: aws_cli_unarchive_installer.changed
 
