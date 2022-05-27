@@ -15,7 +15,7 @@ pipeline {
                script {
                     echo 'initializing terraform ...'
                     withAWS(credentials: 'jenkins_aws') {
-                        sh 'terraform -chdir=terraform/ init -migrate-state'
+                        sh 'terraform -chdir=terraform/ init'
                     }
                }
            }
