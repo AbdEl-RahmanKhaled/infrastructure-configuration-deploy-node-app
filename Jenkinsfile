@@ -23,7 +23,7 @@ pipeline {
        stage('apply infra') {
            steps {
                script {
-                    echo 'deploying image....'
+                    echo 'deploying infra....'
                     sh 'chmod +x scripts/inv-file.sh'
                     sh 'chmod +x scripts/config-file.sh'
                     sh 'chmod +x scripts/env-file.sh'
