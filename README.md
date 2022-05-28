@@ -5,8 +5,8 @@ In this project we will:
 * Bulid infrastructure on [AWS](https://aws.amazon.com/) using [Terraform](https://www.terraform.io/)
 * Configure the environment using [Ansible](https://www.ansible.com/)
 * Build simple node.js app using [Docker](https://www.docker.com/)
-* Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy our app on
-    * Docker installed on private EC2
+* Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy a simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) on
+    * Docker on private EC2
     * Amazon Elastic Kubernetes Service (EKS) cluste
 
 # Tools Used
@@ -105,7 +105,7 @@ In this project we will:
 
 We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) to deploy on our infra.
 
-* Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) `rds_redis` branch
+* Fork and clone the [Repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) `rds_redis` branch
 
 * Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/) in 
     * `Jenkinsfile` 
