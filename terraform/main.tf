@@ -21,4 +21,8 @@ module "eks" {
     nodes_desired_size = var.nodes_desired_size
     nodes_max_size = var.nodes_max_size
     nodes_min_size = var.nodes_min_size
+
+    sg_cidr = var.vpc_cidr_block
+    vpc_id = module.network.vpc_id
+
 }

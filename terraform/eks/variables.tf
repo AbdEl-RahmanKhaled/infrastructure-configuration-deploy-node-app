@@ -6,6 +6,14 @@ variable "eks_sub_2" {
   type = string
 }
 
+variable "sg_cidr" {
+  type = string
+}
+
+variable "vpc_id" {
+  type = string
+}
+
 variable "ws_name" {
   type = string
   description = "Workspace name"  

@@ -1,14 +1,14 @@
 resource "aws_security_group" "eks_sg" {
   name        = "EKS-sg"
   description = "EKS-sg"
-  vpc_id      = module.network.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
     description      = "all from vpc"
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
-    cidr_blocks      = [module.network.vpc_cidr_block]
+    cidr_blocks      = [var.sg_cidr]
   }
 
   egress {
