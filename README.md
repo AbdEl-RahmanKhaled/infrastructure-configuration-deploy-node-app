@@ -80,7 +80,7 @@ In this project we will:
 
     * Create the following structure with Terrafom
 
-        ![infra](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/AWS-infra.jpg)
+        ![infra](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/AWS-infra.png)
 
     * Configure Jenkins server to access the private instance through the bastion server by write `config` file under ~/.ssh
 
@@ -128,17 +128,17 @@ We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenk
 
     * `Jenkinsfile_kube` to deploy on EKS cluster
 
-        ![jenkinsfile](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/jenkins.png)
+        ![jenkinsfile](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/jenkins_kube.png)
 
 * Trigger the pipeline to deploy the App
 
 Finally, you can access the deployed app from created `Load Balancer` URL and check the Database, Redis connectivity by hitting `/db` and `/redis` from your browser.
 
-    ```bash
-    # NOTE
-    if you want to access the app deployed on `private EC2` use the `app-lb` load balancer `DNS name`
-    else use the `DNS name` of the other load balancer
-    ```
+```bash
+# NOTE
+if you want to access the app deployed on `private EC2` use the `app-lb` load balancer `DNS name`
+else use the `DNS name` of the other load balancer
+```
 
 
 
