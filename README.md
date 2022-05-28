@@ -5,12 +5,14 @@ In this project we will:
 * Bulid infrastructure on [AWS](https://aws.amazon.com/) using [Terraform](https://www.terraform.io/)
 * Configure the environment using [Ansible](https://www.ansible.com/)
 * Build simple node.js app using [Docker](https://www.docker.com/)
-* Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy our app
+* Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy our app on
+    * Docker installed on private ec2
+    * Amazon Elastic Kubernetes Service (EKS) cluste
 
 # Tools Used
 
 <p align="center">
-<a href="https://www.terraform.io/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/terraform/terraform-original-wordmark.svg" alt="terraform" width="40" height="40"/> </a> <a href="https://www.ansible.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/ansible/ansible-original-wordmark.svg" alt="ansible" width="40" height="40"/> </a>  <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/bash/bash-original.svg" alt="bash" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.jenkins.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/jenkins/jenkins-original.svg" alt="jenkins" width="40" height="40"/> </a> 
+<a href="https://www.terraform.io/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/terraform/terraform-original-wordmark.svg" alt="terraform" width="40" height="40"/> </a> <a href="https://www.ansible.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/ansible/ansible-original-wordmark.svg" alt="ansible" width="40" height="40"/> </a>  <a href="https://aws.amazon.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/> </a> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/bash/bash-original.svg" alt="bash" width="40" height="40"/> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/> </a> <a href="https://www.jenkins.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/jenkins/jenkins-original.svg" alt="jenkins" width="40" height="40"/> </a> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/AbdEl-RahmanKhaled/AbdEl-RahmanKhaled/main/icons/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> 
 </p>
 
 # Prerequisites
@@ -90,7 +92,7 @@ In this project we will:
 
     * Configure the private instance to be ready to deploy our app using Ansible, it will:
     
-        * Install Docker, Java
+        * Install Docker, Java, ZIP, kubectl, aws cli
         * Copy `.env` file to the server 
         * Copy `ansible/files/agent.jar` to the server to configure the server as an agent for Jenkins
 
@@ -105,7 +107,9 @@ We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenk
 
 * Fork and clone the [repo](https://github.com/AbdEl-RahmanKhaled/jenkins_nodejs_example/tree/rds_redis) `rds_redis` branch
 
-* Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/) in `Jenkinsfile`
+* Replace `IMG_NAME` value with your repo on [DockerHub](https://hub.docker.com/) in 
+    * `Jenkinsfile` 
+    * `Jenkinsfile_kube`
 
 * Add DockerHub credentials to Jenkins under `Manage Jenkins > Manage Credentials > Add Credentials` and name it with `docker-hub`
 
@@ -117,9 +121,24 @@ We will use this simple node.js [App](https://github.com/AbdEl-RahmanKhaled/jenk
 
     ![app pipeline](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/app-pipeline.png)
 
+* Use 
+    * `Jenkinsfile` to deploy on the private EC2
+
+        ![jenkinsfile](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/jenkins.png)
+
+    * `Jenkinsfile_kube` to deploy on EKS cluster
+
+        ![jenkinsfile](https://raw.githubusercontent.com/AbdEl-RahmanKhaled/infrastructure-configuration-deploy-node-app/master/imgs/jenkins.png)
+
 * Trigger the pipeline to deploy the App
 
 Finally, you can access the deployed app from created `Load Balancer` URL and check the Database, Redis connectivity by hitting `/db` and `/redis` from your browser.
+
+    ```bash
+    # NOTE
+    if you want to access the app deployed on `private EC2` use the `app-lb` load balancer `DNS name`
+    else use the `DNS name` of the other load balancer
+    ```
 
 
 
