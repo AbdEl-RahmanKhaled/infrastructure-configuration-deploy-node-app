@@ -5,6 +5,8 @@ resource "aws_eks_cluster" "aws_eks" {
   vpc_config {
     subnet_ids = [var.eks_sub_1, var.eks_sub_2]
     endpoint_private_access = true
+
+    security_group_ids = [ aws_security_group.eks_sg.id ]
   }
 
   tags = {
