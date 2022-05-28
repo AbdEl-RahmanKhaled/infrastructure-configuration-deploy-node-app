@@ -6,7 +6,7 @@ In this project we will:
 * Configure the environment using [Ansible](https://www.ansible.com/)
 * Build simple node.js app using [Docker](https://www.docker.com/)
 * Integrate all these tools with each other and build a pipelines using [Jenkins](https://www.jenkins.io/) to setup infrastructure and deploy our app on
-    * Docker installed on private ec2
+    * Docker installed on private EC2
     * Amazon Elastic Kubernetes Service (EKS) cluste
 
 # Tools Used
