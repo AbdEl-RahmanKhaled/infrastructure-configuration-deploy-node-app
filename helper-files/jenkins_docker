@@ -14,8 +14,8 @@ RUN apt-get update && \
     $(lsb_release -cs) \
     stable" && \
     apt-get update && \
-    apt-get -y install docker-ce
+    apt-get -y install docker-ce && \
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    apt install ansible -y
 
-RUN apt install ansible -y
-
-RUN usermod -aG docker jenkins
